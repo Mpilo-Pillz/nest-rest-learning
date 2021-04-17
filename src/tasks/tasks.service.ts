@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateTaskDto } from './dto/create-task.dto';
 import { Task, TaskStatus } from './tasks.model';
 
 @Injectable()
@@ -9,7 +10,8 @@ export class TasksService {
     return this.tasks;
   }
 
-  createTask(title: string, description: string): Task {
+  createTask(createTaskDto: CreateTaskDto): Task {
+    const { title, description } = createTaskDto;
     const task: Task = {
       id: this.getHoursMinutesSecons(),
       title,
@@ -31,3 +33,15 @@ export class TasksService {
     return `${hour}${minute}${second}${miliSecond}`;
   }
 }
+
+// createTask(title: string, description: string): Task {
+//   const task: Task = {
+//     id: this.getHoursMinutesSecons(),
+//     title,
+//     description,
+//     status: TaskStatus.OPEN,
+//   };
+
+//   this.tasks.push(task);
+//   return task; // return the new task so we dont have to make a new call or refresh the page to get th updated task
+// }
