@@ -1,10 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { Task, TaskStatus } from './tasks.model';
+import * as uuid from 'uuid';
 
 @Injectable()
 export class TasksService {
-  private tasks = [];
+  private tasks: Task[] = [];
 
   getAllTasks() {
     return this.tasks;
+  }
+
+  createTask(title: string, description: string): Task {
+    const task: Task = {
+      id: uuid,
+      title,
+      description,
+      status: TaskStatus.OPEN,
+    };
+
+    this.tasks.push(task);
+    return task; // return the new task so we dont have to make a new call or refresh the page to get th updated task
   }
 }

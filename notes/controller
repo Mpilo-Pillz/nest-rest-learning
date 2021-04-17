@@ -1,1 +1,3 @@
-The controllers job is to handle requests and call the service
+The controllers job is to handle requests and return the response in between calling the service
+
+in angular terms the ontroller is the component
