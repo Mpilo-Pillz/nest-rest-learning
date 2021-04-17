@@ -1,0 +1,6 @@
+we do not have a unified way to describe wat the data looks lke through out the process that is the problem
+
+a dto deines how data will be sent over the network
+can be used as a typescript type
+used for serialization and deserialisation
+help us validate datanot  model
