@@ -1,0 +1,1 @@
+we split the logic to the respository to manage entities in an encapsulated manner adding custom logic keeping our entity file small

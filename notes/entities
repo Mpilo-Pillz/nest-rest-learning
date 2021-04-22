@@ -1,0 +1,2 @@
+represent table. those entities carry logic for us underthe hood that make it weasy to work with a db. savin gus form writing queries
+we use entities to perform CRUD operations
