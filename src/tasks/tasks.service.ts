@@ -52,39 +52,8 @@ export class TasksService {
   // }
 
   async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
-    const { title, description } = createTaskDto;
-    const task = new Task();
-    task.title = title;
-    task.description = description;
-    task.status = TaskStatus.OPEN;
-    await task.save();
-
-    return task;
+    return this.taskRepository.createTask(createTaskDto);
   }
-  // createTask(createTaskDto: CreateTaskDto): Task {
-  //   const { title, description } = createTaskDto;
-  //   const task: Task = {
-  //     id: this.getHoursMinutesSecons(),
-  //     title,
-  //     description,
-  //     status: TaskStatus.OPEN,
-  //   };
-  //   this.tasks.push(task);
-  //   return task; // return the new task so we dont have to make a new call or refresh the page to get th updated task
-  // }
-  // private getHoursMinutesSecons(): string {
-  //   const time = new Date();
-  //   const hour = time.getHours();
-  //   const minute = time.getMinutes();
-  //   const second = time.getSeconds();
-  //   const miliSecond = time.getMilliseconds();
-  //   return `${hour}${minute}${second}${miliSecond}`;
-  // }
-  // updateTaskStatus(id: string, status: TaskStatus): Task {
-  //   const task = this.getTaskById(id);
-  //   task.status = status;
-  //   return task;
-  // }
 }
 
 // createTask(title: string, description: string): Task {
@@ -100,3 +69,17 @@ export class TasksService {
 // }
 
 // private tasks: Task[] = [];
+
+// private getHoursMinutesSecons(): string {
+//   const time = new Date();
+//   const hour = time.getHours();
+//   const minute = time.getMinutes();
+//   const second = time.getSeconds();
+//   const miliSecond = time.getMilliseconds();
+//   return `${hour}${minute}${second}${miliSecond}`;
+// }
+// updateTaskStatus(id: string, status: TaskStatus): Task {
+//   const task = this.getTaskById(id);
+//   task.status = status;
+//   return task;
+// }
