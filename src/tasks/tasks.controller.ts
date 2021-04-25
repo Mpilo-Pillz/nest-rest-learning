@@ -51,11 +51,11 @@ export class TasksController {
   //   return this.taskService.updateTaskStatus(id, status);
   // }
 
-  // @Post()
-  // @UsePipes(ValidationPipe)
-  // createTask(@Body() createTaskDto: CreateTaskDto): Task {
-  //   return this.taskService.createTask(createTaskDto);
-  // }
+  @Post()
+  @UsePipes(ValidationPipe)
+  createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.taskService.createTask(createTaskDto);
+  }
 
   // @Post()
   // createTaskDecorated(
@@ -65,7 +65,7 @@ export class TasksController {
   //   console.log('tite', title);
   //   console.log('description', description);
 
-  //   // return this.taskService.createTask(title, description);
+  //   return this.taskService.createTask(title, description);
   // }
 
   // @Post()
