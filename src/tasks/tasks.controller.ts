@@ -38,10 +38,10 @@ export class TasksController {
     return this.taskService.getTaskById(id);
   }
 
-  // @Delete('/:id')
-  // deleteTask(@Param('id') id: string): void {
-  //   this.taskService.deleteTask(id);
-  // }
+  @Delete('/:id')
+  deleteTask(@Param('id', ParseIntPipe) id: number): Promise<void> {
+    return this.taskService.deleteTask(id);
+  }
 
   // @Patch('/:id/status')
   // updateTaskStatus(
@@ -58,17 +58,6 @@ export class TasksController {
   }
 
   // @Post()
-  // createTaskDecorated(
-  //   @Body('title') title: string,
-  //   @Body('description') description: string,
-  // ) {
-  //   console.log('tite', title);
-  //   console.log('description', description);
-
-  //   return this.taskService.createTask(title, description);
-  // }
-
-  // @Post()
   // createTaskWayOne(@Body() body) {
   //   console.log('body', body);
   // }
@@ -78,3 +67,14 @@ export class TasksController {
 //   getAllTasks(): Task[] {
 //     return this.taskService.getAllTasks();
 //   }
+
+// @Post()
+// createTaskDecorated(
+//   @Body('title') title: string,
+//   @Body('description') description: string,
+// ) {
+//   console.log('tite', title);
+//   console.log('description', description);
+
+//   return this.taskService.createTask(title, description);
+// }

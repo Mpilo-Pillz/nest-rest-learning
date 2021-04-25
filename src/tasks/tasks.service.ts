@@ -39,17 +39,15 @@ export class TasksService {
 
     return found;
   }
-  // getTaskById(id: string): Task {
-  //   const found = this.tasks.find(task => task.id === id);
-  //   if (!found) {
-  //     throw new NotFoundException(`Task with ${id} not found`);
-  //   }
-  //   return; i didnt return found
-  // }
-  // deleteTask(id: string): void {
-  //   const found = this.getTaskById(id);
-  //   this.tasks = this.tasks.filter(task => task.id !== found.id);
-  // }
+
+  async deleteTask(id: number): Promise<void> {
+    const result = await this.taskRepository.delete(id);
+    console.log(result);
+
+    if (result.affected === 0) {
+      throw new NotFoundException(`Task with ID "${id} not found`);
+    }
+  }
 
   async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
     return this.taskRepository.createTask(createTaskDto);
@@ -82,4 +80,12 @@ export class TasksService {
 //   const task = this.getTaskById(id);
 //   task.status = status;
 //   return task;
+// }
+
+// getTaskById(id: string): Task {
+//   const found = this.tasks.find(task => task.id === id);
+//   if (!found) {
+//     throw new NotFoundException(`Task with ${id} not found`);
+//   }
+//   return; i didnt return found
 // }
