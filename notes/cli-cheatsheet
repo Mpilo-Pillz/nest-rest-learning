@@ -1,0 +1,3 @@
+nest g service auth --no-spec
+nest g controller auth --no-spec
+nest g module auth

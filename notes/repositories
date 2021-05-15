@@ -1,1 +1,3 @@
 we split the logic to the respository to manage entities in an encapsulated manner adding custom logic keeping our entity file small
+
+We basically use a repository to write heavy db logic as to keep the service clean
