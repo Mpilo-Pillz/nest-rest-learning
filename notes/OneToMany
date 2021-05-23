@@ -1,0 +1,8 @@
+notice
+ @ManyToOne(type => User, user => user.tasks, { eager: false}) //task.entity.ts
+
+ the user -> user.task refers to 
+
+ @OneToMany(type => Task, task => task.user, { eager: true}) // user.entity.ts
+
+ and vise versa
