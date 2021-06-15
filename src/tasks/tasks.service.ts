@@ -47,8 +47,9 @@ export class TasksService {
     return found;
   }
 
-  async deleteTask(id: number): Promise<void> {
-    const result = await this.taskRepository.delete(id);
+  async deleteTask(id: number, user: User): Promise<void> {
+    // const result = await this.taskRepository.delete(id);
+    const result = await this.taskRepository.delete({ id, userId: user.id });
     console.log(result);
 
     if (result.affected === 0) {
