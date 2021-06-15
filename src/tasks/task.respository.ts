@@ -17,7 +17,7 @@ export class TaskRepository extends Repository<Task> {
     task.user = user;
     await task.save();
 
-    // delete task.user; //to not show the user who owns the task
+    delete task.user; //to not show the user who owns the task to hide the user obj
     return task;
   }
 
