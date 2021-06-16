@@ -18,7 +18,8 @@ export class UserRepository extends Repository<User> {
     // console.log('swai -->', salt);
     // user.password = await this.hashPassword(password, salt);
 
-    const user = new User();
+    // const user = new User(); // creating a user this way makes it hard to test
+    const user = this.create();
     user.username = username;
     user.salt = await bcrypt.genSalt();
     user.password = await this.hashPassword(password, user.salt);
