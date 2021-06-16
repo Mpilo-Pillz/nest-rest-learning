@@ -107,4 +107,30 @@ describe('Task Servce', () => {
       );
     });
   });
+
+  describe('updateTaskStatus', () => {
+    const save = jest.fn().mockResolvedValue(true);
+    // it('updates task status', async () => {
+    //   tasksService.getTaskById = jest.fn().mockResolvedValue({
+    //     status: TaskStatus.OPEN,
+    //     save: jest.fn().mockResolvedValue(true),
+    //   });
+    it('updates task status', async () => {
+      tasksService.getTaskById = jest.fn().mockResolvedValue({
+        status: TaskStatus.OPEN,
+        save,
+      });
+      expect(tasksService.getTaskById).not.toHaveBeenCalled();
+      expect(save).not.toHaveBeenCalled();
+      const result = await tasksService.updateTaskStatus(
+        1,
+        TaskStatus.DONE,
+        mockUser,
+      );
+      expect(tasksService.getTaskById).toHaveBeenCalled();
+      expect(tasksService.getTaskById);
+      expect(save).toHaveBeenCalled();
+      expect(result.status).toEqual(TaskStatus.DONE);
+    });
+  });
 });
