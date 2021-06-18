@@ -26,6 +26,8 @@ class FriendsList {
 describe('my example test', () => {
   it('returns true', () => {
     expect(true).toEqual(true);
+    expect(1 + 2).toEqual(3);
+    expect('password').toEqual('password');
   });
 });
 
