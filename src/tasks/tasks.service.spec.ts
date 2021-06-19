@@ -8,6 +8,7 @@ import { TasksService } from './tasks.service';
 
 /*
  * Mocking becuase actula calls to DB are expensive
+ * We ae not testing a  pure function.
  */
 const mockUser = { id: 1, username: 'TestUser' };
 const mockTaskRepository = () => ({
@@ -22,6 +23,10 @@ describe('Task Servce', () => {
   let taskRepository;
 
   beforeEach(async () => {
+    /*
+     * simulating a module
+     * initialise a task service and task repository
+     */
     const module = await Test.createTestingModule({
       providers: [
         TasksService,
@@ -47,6 +52,16 @@ describe('Task Servce', () => {
       // expet tasksRepository.getTasks TO HAVE BEEN CALLED
       expect(taskRepository.getTasks).toHaveBeenCalled();
       expect(result).toEqual('some value');
+    });
+
+    // part 2
+    it('calls TaskRepository.getTasks and returns the result', async () => {
+      expect(taskRepository.getTasks).not.toHaveBeenCalled();
+      taskRepository.getTasks.mockResolvedValue('someValue');
+      // call tasksSerice.getTasks, which would then calll the repository's getTasks
+      const result = await tasksService.getTasks(null, mockUser);
+      expect(taskRepository.getTasks).toHaveBeenCalled();
+      expect(result).toEqual('someValue');
     });
   });
 
