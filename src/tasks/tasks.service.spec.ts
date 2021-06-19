@@ -77,7 +77,7 @@ describe('Task Servce', () => {
       });
     });
 
-    it('throws an error as task is ot found', () => {
+    it('throws an error as task is not found', () => {
       taskRepository.findOne.mockResolvedValue(null);
       expect(tasksService.getTaskById(1, mockUser)).rejects.toThrow(
         NotFoundException,
